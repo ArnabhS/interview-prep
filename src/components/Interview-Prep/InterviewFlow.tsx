@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import ReviewComponent from "@/app/uniboard/applications/interview-prep/review";
+import ReviewComponent from "@/components/Interview-Prep/review";
+import Image from "next/image";
 
 const questions = [
   "Can you tell me a bit about yourself?",
@@ -21,7 +22,19 @@ const InterviewFlow = () => {
 
   return (
     <div className="flex flex-col items-center justify-center p-6">
-      <button className="self-start text-blue-500 text-sm mb-4">&larr; Back</button>
+      <a href="/uniboard/applications/interview-prep">
+      <button className="bg-[#346DE033] px-3 py-2 self-start text-primary text-sm mb-4 rounded-md flex items-center gap-2"
+      
+      >
+        <Image
+        src={'/back.png'}
+        width={100}
+        height={100}
+        className="w-2 h-2"
+        alt=""
+        />
+         Back</button>
+         </a>
       <span className="text-sm text-primary px-2 py-1 rounded-md bg-[#346DE033]">Round</span>
       <h2 className="text-[#808080] text-xl mt-6 text-center">
         {questions[currentQuestion]}

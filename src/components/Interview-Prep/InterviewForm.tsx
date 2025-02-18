@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
 import InterviewQuestions from "@/components/Interview-Prep/InterviewFlow"; // Import InterviewQuestions component
+import Retake from "../ui/Retake";
 
 const InterviewForm = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,20 +24,22 @@ const InterviewForm = () => {
       {!startInterview ? (
         <div>
           <div className="flex items-center gap-6">
-            <Button onClick={() => setIsOpen(true)}>+ Start New Interview</Button>
-            <div className="bg-white w-80 py-2 px-4 flex justify-between items-center"> 
+            <Button onClick={() => setIsOpen(true)}>
+              + Start New Interview
+            </Button>
+            <div className="bg-white w-80 py-2 px-4 flex justify-between items-center">
               <div>
-                <p className="text-base font-semibold">Data Manager</p>
+                <p className="text-base text-[#373737] font-semibold">Data Manager</p>
                 <p className="text-sm font-thin">Google</p>
               </div>
-              <button className="bg-primary rounded-md px-2 py-0 text-sm text-white h-8"> Retake</button>
+              <Retake/>
             </div>
-            <div className="bg-white w-80 py-2 px-4 flex justify-between items-center"> 
+            <div className="bg-white w-80 py-2 px-4 flex justify-between items-center">
               <div>
-                <p className="text-base font-semibold">Data Manager</p>
+                <p className="text-base text-[#373737] font-semibold">Data Manager</p>
                 <p className="text-sm font-thin">Google</p>
               </div>
-              <button className="bg-primary rounded-md px-2 py-0 text-sm text-white h-8"> Retake</button>
+             <Retake/>
             </div>
           </div>
           <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
@@ -83,25 +86,30 @@ const InterviewForm = () => {
                   <div className="max-w-[80%] w-full">
                     <p className="mb-1 font-normal text-[#808080]">Round</p>
                     <div className="flex gap-2 text-sm">
-                      {["Question Type 1", "Question Type 2", "Question Type 3"].map(
-                        (type) => (
-                          <button
-                            key={type}
-                            className={`px-3 py-1 rounded ${
-                              selectedRound === type
-                                ? "bg-primary text-white"
-                                : "bg-[#D0D0D0]"
-                            }`}
-                            onClick={() => setSelectedRound(type)}
-                          >
-                            {type}
-                          </button>
-                        )
-                      )}
+                      {[
+                        "Question Type 1",
+                        "Question Type 2",
+                        "Question Type 3",
+                      ].map((type) => (
+                        <button
+                          key={type}
+                          className={`px-3 py-1 rounded ${
+                            selectedRound === type
+                              ? "bg-primary text-white"
+                              : "bg-[#D0D0D0]"
+                          }`}
+                          onClick={() => setSelectedRound(type)}
+                        >
+                          {type}
+                        </button>
+                      ))}
                     </div>
                   </div>
                   <div className="flex justify-end">
-                    <button onClick={handleStartInterview} className="w-1/4 bg-primary text-sm text-white py-2 rounded mt-3">
+                    <button
+                      onClick={handleStartInterview}
+                      className="w-1/4 bg-primary text-sm text-white py-2 rounded mt-3"
+                    >
                       Start Interview
                     </button>
                   </div>
@@ -111,7 +119,7 @@ const InterviewForm = () => {
           </Modal>
         </div>
       ) : (
-        <InterviewQuestions   />
+        <InterviewQuestions />
       )}
     </>
   );
