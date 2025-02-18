@@ -9,6 +9,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary:"#346DE0",
+        'btn-bg': "rgba(52, 109, 224, 0.1)",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
